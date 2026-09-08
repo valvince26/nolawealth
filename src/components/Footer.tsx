@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,10 +9,14 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="space-y-space-md">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-md bg-secondary/20 border border-secondary/40 flex items-center justify-center text-secondary-fixed">
-                <span className="material-symbols-outlined text-[20px]">token</span>
-              </div>
-              <span className="font-headline-sm text-headline-sm text-on-primary uppercase tracking-tight">
+              <Image
+                src="/logo.png"
+                alt="NOLA Wealth Financial Logo"
+                width={48}
+                height={48}
+                className="h-10 w-auto object-contain brightness-0 invert opacity-90"
+              />
+              <span className="font-headline-sm text-headline-sm text-on-primary uppercase tracking-tight font-serif">
                 NOLA Wealth
               </span>
             </div>

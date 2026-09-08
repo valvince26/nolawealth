@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AboutSummary() {
   return (
@@ -48,8 +49,14 @@ export default function AboutSummary() {
           <div className="lg:col-span-5 mt-space-xl lg:mt-0">
             <div className="bg-primary-container text-on-primary p-space-2xl rounded-DEFAULT shadow-xl relative overflow-hidden flex flex-col justify-between border border-secondary/30 min-h-[380px]">
               {/* Watermark Crest Emblem */}
-              <div className="absolute -right-8 -bottom-8 opacity-10 pointer-events-none">
-                <span className="material-symbols-outlined text-[200px] text-secondary-fixed">token</span>
+              <div className="absolute -right-8 -bottom-8 opacity-15 pointer-events-none">
+                <Image
+                  src="/logo.png"
+                  alt="NOLA Wealth Emblem"
+                  width={220}
+                  height={220}
+                  className="w-56 h-auto brightness-0 invert"
+                />
               </div>
 
               <div>

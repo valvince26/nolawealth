@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, User, ShieldCheck } from "lucide-react";
 import ConsultationModal from "./ConsultationModal";
@@ -28,11 +29,15 @@ export default function Header() {
         <div className="h-20 max-w-[1320px] mx-auto px-margin-mobile lg:px-margin-desktop flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-8 h-8 rounded-md bg-primary-container flex items-center justify-center text-secondary-fixed shadow-sm group-hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined text-[22px]">token</span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="NOLA Wealth Financial Logo"
+              width={48}
+              height={48}
+              className="h-10 w-auto object-contain group-hover:scale-105 transition-transform"
+            />
             <div className="flex flex-col">
-              <span className="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none uppercase">
+              <span className="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none uppercase font-serif">
                 NOLA Wealth
               </span>
               <span className="font-label-sm text-label-sm tracking-[0.2em] text-secondary uppercase leading-none mt-1">
