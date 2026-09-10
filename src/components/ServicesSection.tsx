@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Download, ArrowRight } from "lucide-react";
 
 export default function ServicesSection() {
@@ -7,6 +8,7 @@ export default function ServicesSection() {
       numTag: "01 — Operational Infrastructure",
       materialIcon: "badge",
       title: "Remote Staffing",
+      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop",
       description:
         "Extend your internal bandwidth with dependable, rigorously trained professionals who manage customer touchpoints and core operational tasks.",
       checklist: [
@@ -24,6 +26,7 @@ export default function ServicesSection() {
       numTag: "02 — Brand Expression",
       materialIcon: "palette",
       title: "Creative Services",
+      image: "https://images.unsplash.com/photo-1542744094-3a3121695437?q=80&w=800&auto=format&fit=crop",
       description:
         "Transform high-conviction concepts into bespoke visual assets and digital experiences that reflect the prestige and authority of your organization.",
       checklist: [
@@ -41,6 +44,7 @@ export default function ServicesSection() {
       numTag: "03 — Market Capture",
       materialIcon: "insights",
       title: "Digital Services",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
       description:
         "Capture qualified demand and solidify market share through high-performance acquisition funnels and multi-channel engagement pipelines.",
       checklist: [
@@ -67,7 +71,7 @@ export default function ServicesSection() {
                 Our Capabilities
               </span>
             </div>
-            <h2 className="font-headline-xl text-headline-xl-mobile lg:text-headline-xl text-on-surface">
+            <h2 className="font-headline-xl text-headline-xl-mobile lg:text-headline-xl text-on-surface font-serif">
               Everything Your Business Needs to Move Forward
             </h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant mt-2">
@@ -90,41 +94,56 @@ export default function ServicesSection() {
           {pillars.map((pillar, idx) => (
             <div
               key={idx}
-              className="bg-surface-container-lowest p-space-xl rounded-DEFAULT shadow-md flex flex-col justify-between hover:shadow-xl transition-all duration-300 border border-secondary/15"
+              className="bg-surface-container-lowest rounded-DEFAULT shadow-md flex flex-col justify-between hover:shadow-xl transition-all duration-300 border border-secondary/15 overflow-hidden group"
             >
               <div>
-                <div className="flex items-center justify-between pb-space-md mb-space-md border-b border-outline-variant/20">
-                  <span className="font-label-sm text-label-sm uppercase tracking-[0.16em] text-secondary font-bold">
-                    {pillar.numTag}
-                  </span>
-                  <span className="material-symbols-outlined text-secondary text-[22px]">{pillar.materialIcon}</span>
+                {/* Card Header Photo Image */}
+                <div className="relative w-full h-48 bg-surface-container overflow-hidden">
+                  <Image
+                    src={pillar.image}
+                    alt={pillar.title}
+                    fill
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-on-primary">
+                    <span className="font-label-sm text-label-sm uppercase tracking-[0.16em] text-secondary-fixed font-bold">
+                      {pillar.numTag}
+                    </span>
+                    <span className="material-symbols-outlined text-secondary-fixed text-[22px]">{pillar.materialIcon}</span>
+                  </div>
                 </div>
 
-                <h3 className="font-headline-md text-headline-md text-on-surface mb-space-xs">
-                  {pillar.title}
-                </h3>
-                <p className="font-body-md text-body-md text-on-surface-variant mb-space-lg leading-relaxed">
-                  {pillar.description}
-                </p>
+                <div className="p-space-xl pt-space-md">
+                  <h3 className="font-headline-md text-headline-md text-on-surface mb-space-xs font-serif">
+                    {pillar.title}
+                  </h3>
+                  <p className="font-body-md text-body-md text-on-surface-variant mb-space-lg leading-relaxed">
+                    {pillar.description}
+                  </p>
 
-                {/* Checklist */}
-                <div className="space-y-2 mb-space-xl">
-                  {pillar.checklist.map((item, cIdx) => (
-                    <div key={cIdx} className="flex items-center gap-2.5 py-1 text-on-surface font-body-md text-body-md">
-                      <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></span>
-                      <span>{item}</span>
-                    </div>
-                  ))}
+                  {/* Checklist */}
+                  <div className="space-y-2 mb-space-xl">
+                    {pillar.checklist.map((item, cIdx) => (
+                      <div key={cIdx} className="flex items-center gap-2.5 py-1 text-on-surface font-body-md text-body-md">
+                        <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></span>
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              <Link
-                href={pillar.href}
-                className="inline-flex items-center justify-between w-full pt-space-md border-t border-outline-variant/20 text-primary-container font-label-md text-label-md uppercase tracking-wider group hover:text-secondary transition-colors"
-              >
-                <span>{pillar.linkText}</span>
-                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <div className="px-space-xl pb-space-xl">
+                <Link
+                  href={pillar.href}
+                  className="inline-flex items-center justify-between w-full pt-space-md border-t border-outline-variant/20 text-primary-container font-label-md text-label-md uppercase tracking-wider group-hover:text-secondary transition-colors"
+                >
+                  <span>{pillar.linkText}</span>
+                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </div>
           ))}
         </div>

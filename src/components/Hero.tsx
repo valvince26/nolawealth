@@ -11,8 +11,21 @@ export default function Hero() {
   return (
     <>
       <section className="relative w-full bg-surface-container-lowest overflow-hidden">
-        {/* Subtle architectural background accent */}
-        <div className="absolute inset-0 pointer-events-none opacity-40 bg-[radial-gradient(#e0c298_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        {/* Office Building Background Image Layer */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop"
+            alt="Corporate Office Building Architecture"
+            fill
+            className="object-cover object-center opacity-15"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-surface-container-lowest via-surface-container-lowest/95 to-surface-container-lowest/80"></div>
+        </div>
+
+        {/* Subtle architectural background accent pattern */}
+        <div className="absolute inset-0 pointer-events-none opacity-30 bg-[radial-gradient(#e0c298_1px,transparent_1px)] [background-size:24px_24px] z-0"></div>
         
         <div className="max-w-[1320px] mx-auto px-margin-mobile lg:px-margin-desktop py-space-2xl lg:py-space-4xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-center">
