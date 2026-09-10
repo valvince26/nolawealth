@@ -10,9 +10,27 @@ import {
   ChevronDown,
   Users,
   Palette,
-  TrendingUp,
+  Monitor,
   ArrowRight,
-  Sparkles,
+  PhoneCall,
+  UserCheck,
+  Settings,
+  Headphones,
+  Video,
+  Calculator,
+  Film,
+  FileText,
+  Camera,
+  Award,
+  Globe,
+  TrendingUp,
+  Edit3,
+  Code,
+  Search,
+  MousePointerClick,
+  Share2,
+  MessageSquare,
+  Mail,
 } from "lucide-react";
 import ConsultationModal from "./ConsultationModal";
 
@@ -45,29 +63,32 @@ export default function Header() {
   ];
 
   const remoteStaffingItems = [
-    { name: "Telemarketing & Sales", desc: "Outreach & lead qualification", href: "/services#remote-staffing" },
-    { name: "Executive Virtual Assistant", desc: "Calendar & logistics coordination", href: "/services#remote-staffing" },
-    { name: "Operational & Back-Office Support", desc: "Workflow oversight & admin", href: "/services#remote-staffing" },
-    { name: "Technical & Help Desk Support", desc: "Multi-tier IT troubleshooting", href: "/services#remote-staffing" },
-    { name: "Secure Video Monitoring", desc: "24/7 surveillance & auditing", href: "/services#remote-staffing" },
-    { name: "Certified Bookkeeping", desc: "Reconciliation & month-end closures", href: "/services#remote-staffing" },
+    { name: "Telemarketing & Sales", href: "/services#remote-staffing", icon: PhoneCall },
+    { name: "Virtual Assistant", href: "/services#remote-staffing", icon: UserCheck },
+    { name: "Operational Support", href: "/services#remote-staffing", icon: Settings },
+    { name: "Technical Support", href: "/services#remote-staffing", icon: Headphones },
+    { name: "Video Monitoring", href: "/services#remote-staffing", icon: Video },
+    { name: "Bookkeeping", href: "/services#remote-staffing", icon: Calculator },
   ];
 
   const creativeServicesItems = [
-    { name: "Graphic Design & Brand Systems", desc: "Pitch decks, reports & visual assets", href: "/services#creative-services" },
-    { name: "High-Definition Video Production", desc: "Manifestos, explainers & media", href: "/services#creative-services" },
-    { name: "Executive Copywriting", desc: "Editorial positioning & copy", href: "/services#creative-services" },
-    { name: "Corporate Photography", desc: "Headshots & facility captures", href: "/services#creative-services" },
-    { name: "Bespoke Web Design & UX", desc: "Fluid interfaces & user journeys", href: "/services#creative-services" },
-    { name: "Custom Software Development", desc: "Portals, dashboards & tools", href: "/services#creative-services" },
+    { name: "Graphic Design", href: "/services#creative-services", icon: Palette },
+    { name: "Video Production", href: "/services#creative-services", icon: Film },
+    { name: "Copywriting", href: "/services#creative-services", icon: FileText },
+    { name: "Photography", href: "/services#creative-services", icon: Camera },
+    { name: "Branding", href: "/services#creative-services", icon: Award },
+    { name: "Web Design", href: "/services#creative-services", icon: Globe },
+    { name: "Marketing Strategy", href: "/services#creative-services", icon: TrendingUp },
+    { name: "Content Creation", href: "/services#creative-services", icon: Edit3 },
+    { name: "Custom Software Development", href: "/services#creative-services", icon: Code },
   ];
 
   const digitalServicesItems = [
-    { name: "Search Engine Optimization (SEO)", desc: "Enterprise technical SEO & keywords", href: "/services#digital-services" },
-    { name: "PPC Advertising & Bidding", desc: "Paid search & retargeting funnels", href: "/services#digital-services" },
-    { name: "Executive Social Media Mgmt", desc: "Community cultivation & reputation", href: "/services#digital-services" },
-    { name: "Omnichannel Support Systems", desc: "Integrated CRM, chat & ticketing", href: "/services#digital-services" },
-    { name: "Email Marketing & Automation", desc: "Drip campaigns & lifecycle flows", href: "/services#digital-services" },
+    { name: "SEO", href: "/services#digital-services", icon: Search },
+    { name: "PPC Advertising", href: "/services#digital-services", icon: MousePointerClick },
+    { name: "Social Media Management", href: "/services#digital-services", icon: Share2 },
+    { name: "Omnichannel Support", href: "/services#digital-services", icon: MessageSquare },
+    { name: "Email Marketing", href: "/services#digital-services", icon: Mail },
   ];
 
   return (
@@ -169,215 +190,103 @@ export default function Header() {
             onMouseLeave={handleMouseLeave}
           >
             <div className="max-w-[1320px] mx-auto px-margin-desktop py-space-xl">
-              {/* Top Header of Mega Menu */}
-              <div className="flex items-center justify-between pb-space-sm mb-space-lg border-b border-outline-variant/20">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-secondary"></span>
-                    <span className="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] font-semibold">
-                      Capabilities &amp; Services Directory
-                    </span>
-                  </div>
-                  <p className="font-headline-sm text-headline-sm text-on-surface font-serif mt-0.5">
-                    Integrated Solutions Built Around Your Business
-                  </p>
-                </div>
+              {/* Top Overview Link */}
+              <div className="mb-6">
                 <Link
                   href="/services"
                   onClick={() => setIsServicesOpen(false)}
-                  className="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-wider text-secondary hover:text-on-surface transition-colors py-1.5 px-3 rounded-md bg-surface-container-low hover:bg-surface-container"
+                  className="inline-flex items-center gap-2 text-secondary hover:text-on-surface font-headline-sm font-semibold text-lg transition-colors group"
                 >
-                  <span>View All Services</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>All Services Overview</span>
+                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
 
-              {/* 3 Columns for 3 Service Pillars */}
-              <div className="grid grid-cols-3 gap-gutter-desktop">
-                {/* Category 1: Remote Staffing */}
-                <div className="bg-surface-container-low/50 rounded-xl p-space-lg border border-secondary/15 hover:border-secondary/30 transition-all flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between mb-space-md">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-primary-container text-secondary-fixed flex items-center justify-center shadow-sm">
-                          <Users className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block font-bold">01</span>
-                          <h3 className="font-headline-sm text-headline-sm text-on-surface font-serif">Remote Staffing</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed text-xs">
-                      Dependable, trained professionals to manage customer touchpoints and core operations.
-                    </p>
+              {/* 3 Columns Layout matching user list */}
+              <div className="grid grid-cols-3 gap-12 items-start">
+                {/* Column 1: Remote Staffing */}
+                <div>
+                  <div className="flex items-center gap-3 pb-3 border-b border-outline-variant/30 mb-5">
+                    <Users className="w-5 h-5 text-secondary" />
+                    <h3 className="font-headline-sm text-lg font-bold text-on-surface font-serif">Remote Staffing</h3>
+                  </div>
 
-                    <ul className="space-y-1.5">
-                      {remoteStaffingItems.map((item, idx) => (
+                  <ul className="space-y-3.5">
+                    {remoteStaffingItems.map((item, idx) => {
+                      const IconComp = item.icon;
+                      return (
                         <li key={idx}>
                           <Link
                             href={item.href}
                             onClick={() => setIsServicesOpen(false)}
-                            className="group flex items-start gap-2.5 p-1.5 rounded-md hover:bg-surface-container-lowest transition-colors"
+                            className="group flex items-center gap-3 text-on-surface-variant hover:text-secondary transition-colors"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-secondary mt-1.5 shrink-0 group-hover:scale-125 transition-transform"></span>
-                            <div>
-                              <span className="block font-label-md text-label-md text-on-surface group-hover:text-secondary font-medium transition-colors leading-tight">
-                                {item.name}
-                              </span>
-                              <span className="block font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">
-                                {item.desc}
-                              </span>
-                            </div>
+                            <IconComp className="w-4 h-4 text-secondary/80 group-hover:text-secondary group-hover:scale-110 transition-all shrink-0" />
+                            <span className="font-body-md text-sm font-medium text-on-surface group-hover:text-secondary transition-colors">
+                              {item.name}
+                            </span>
                           </Link>
                         </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="pt-space-md mt-space-md border-t border-outline-variant/20">
-                    <Link
-                      href="/services#remote-staffing"
-                      onClick={() => setIsServicesOpen(false)}
-                      className="inline-flex items-center justify-between w-full font-label-sm text-label-sm uppercase tracking-wider text-secondary hover:text-on-surface transition-colors"
-                    >
-                      <span>Explore Staffing Solutions</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
+                      );
+                    })}
+                  </ul>
                 </div>
 
-                {/* Category 2: Creative Services */}
-                <div className="bg-surface-container-low/50 rounded-xl p-space-lg border border-secondary/15 hover:border-secondary/30 transition-all flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between mb-space-md">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-primary-container text-secondary-fixed flex items-center justify-center shadow-sm">
-                          <Palette className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block font-bold">02</span>
-                          <h3 className="font-headline-sm text-headline-sm text-on-surface font-serif">Creative Services</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed text-xs">
-                      Bespoke visual assets, studio media, branding identity, and custom web software.
-                    </p>
+                {/* Column 2: Creative Services */}
+                <div>
+                  <div className="flex items-center gap-3 pb-3 border-b border-outline-variant/30 mb-5">
+                    <Palette className="w-5 h-5 text-secondary" />
+                    <h3 className="font-headline-sm text-lg font-bold text-on-surface font-serif">Creative Services</h3>
+                  </div>
 
-                    <ul className="space-y-1.5">
-                      {creativeServicesItems.map((item, idx) => (
+                  <ul className="space-y-3.5">
+                    {creativeServicesItems.map((item, idx) => {
+                      const IconComp = item.icon;
+                      return (
                         <li key={idx}>
                           <Link
                             href={item.href}
                             onClick={() => setIsServicesOpen(false)}
-                            className="group flex items-start gap-2.5 p-1.5 rounded-md hover:bg-surface-container-lowest transition-colors"
+                            className="group flex items-center gap-3 text-on-surface-variant hover:text-secondary transition-colors"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-secondary mt-1.5 shrink-0 group-hover:scale-125 transition-transform"></span>
-                            <div>
-                              <span className="block font-label-md text-label-md text-on-surface group-hover:text-secondary font-medium transition-colors leading-tight">
-                                {item.name}
-                              </span>
-                              <span className="block font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">
-                                {item.desc}
-                              </span>
-                            </div>
+                            <IconComp className="w-4 h-4 text-secondary/80 group-hover:text-secondary group-hover:scale-110 transition-all shrink-0" />
+                            <span className="font-body-md text-sm font-medium text-on-surface group-hover:text-secondary transition-colors">
+                              {item.name}
+                            </span>
                           </Link>
                         </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="pt-space-md mt-space-md border-t border-outline-variant/20">
-                    <Link
-                      href="/services#creative-services"
-                      onClick={() => setIsServicesOpen(false)}
-                      className="inline-flex items-center justify-between w-full font-label-sm text-label-sm uppercase tracking-wider text-secondary hover:text-on-surface transition-colors"
-                    >
-                      <span>Explore Creative Studio</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
+                      );
+                    })}
+                  </ul>
                 </div>
 
-                {/* Category 3: Digital Services */}
-                <div className="bg-surface-container-low/50 rounded-xl p-space-lg border border-secondary/15 hover:border-secondary/30 transition-all flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between mb-space-md">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-primary-container text-secondary-fixed flex items-center justify-center shadow-sm">
-                          <TrendingUp className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block font-bold">03</span>
-                          <h3 className="font-headline-sm text-headline-sm text-on-surface font-serif">Digital Services</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed text-xs">
-                      High-performance acquisition funnels, enterprise SEO, PPC, and omnichannel CX.
-                    </p>
+                {/* Column 3: Digital Services */}
+                <div>
+                  <div className="flex items-center gap-3 pb-3 border-b border-outline-variant/30 mb-5">
+                    <Monitor className="w-5 h-5 text-secondary" />
+                    <h3 className="font-headline-sm text-lg font-bold text-on-surface font-serif">Digital Services</h3>
+                  </div>
 
-                    <ul className="space-y-1.5">
-                      {digitalServicesItems.map((item, idx) => (
+                  <ul className="space-y-3.5">
+                    {digitalServicesItems.map((item, idx) => {
+                      const IconComp = item.icon;
+                      return (
                         <li key={idx}>
                           <Link
                             href={item.href}
                             onClick={() => setIsServicesOpen(false)}
-                            className="group flex items-start gap-2.5 p-1.5 rounded-md hover:bg-surface-container-lowest transition-colors"
+                            className="group flex items-center gap-3 text-on-surface-variant hover:text-secondary transition-colors"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-secondary mt-1.5 shrink-0 group-hover:scale-125 transition-transform"></span>
-                            <div>
-                              <span className="block font-label-md text-label-md text-on-surface group-hover:text-secondary font-medium transition-colors leading-tight">
-                                {item.name}
-                              </span>
-                              <span className="block font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">
-                                {item.desc}
-                              </span>
-                            </div>
+                            <IconComp className="w-4 h-4 text-secondary/80 group-hover:text-secondary group-hover:scale-110 transition-all shrink-0" />
+                            <span className="font-body-md text-sm font-medium text-on-surface group-hover:text-secondary transition-colors">
+                              {item.name}
+                            </span>
                           </Link>
                         </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="pt-space-md mt-space-md border-t border-outline-variant/20">
-                    <Link
-                      href="/services#digital-services"
-                      onClick={() => setIsServicesOpen(false)}
-                      className="inline-flex items-center justify-between w-full font-label-sm text-label-sm uppercase tracking-wider text-secondary hover:text-on-surface transition-colors"
-                    >
-                      <span>Explore Digital Growth</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
+                      );
+                    })}
+                  </ul>
                 </div>
-              </div>
-
-              {/* Mega Menu Footer Banner */}
-              <div className="mt-space-md p-space-md rounded-xl bg-primary-container text-on-primary border border-secondary/30 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0">
-                    <Sparkles className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="font-headline-sm text-headline-sm text-on-primary font-serif block text-sm">
-                      Need a Custom Services Package?
-                    </span>
-                    <span className="font-body-sm text-body-sm text-on-primary-container text-xs">
-                      We architect custom operational &amp; creative capability suites tailored to your organizational goals.
-                    </span>
-                  </div>
-                </div>
-                <button
-                  onClick={() => {
-                    setIsServicesOpen(false);
-                    setConsultationOpen(true);
-                  }}
-                  className="whitespace-nowrap px-5 py-2 rounded-DEFAULT bg-secondary text-on-secondary font-label-sm text-label-sm uppercase tracking-wider hover:bg-on-secondary-fixed-variant transition-all shadow-sm"
-                >
-                  Book Consultation
-                </button>
               </div>
             </div>
           </div>
@@ -419,58 +328,70 @@ export default function Header() {
 
                       {/* Submenu for Services in Mobile */}
                       {mobileServicesExpanded && (
-                        <div className="pl-4 py-2 space-y-3 border-l-2 border-secondary/30 ml-3 my-1">
+                        <div className="pl-4 py-2 space-y-4 border-l-2 border-secondary/30 ml-3 my-1">
                           <div>
-                            <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold block mb-1">
-                              01. Remote Staffing
+                            <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold block mb-2">
+                              Remote Staffing
                             </span>
-                            <div className="pl-2 space-y-1">
-                              {remoteStaffingItems.map((item, idx) => (
-                                <Link
-                                  key={idx}
-                                  href={item.href}
-                                  onClick={() => setMobileMenuOpen(false)}
-                                  className="block font-body-md text-body-md text-on-surface-variant hover:text-on-surface py-0.5"
-                                >
-                                  {item.name}
-                                </Link>
-                              ))}
+                            <div className="pl-2 space-y-2">
+                              {remoteStaffingItems.map((item, idx) => {
+                                const IconComp = item.icon;
+                                return (
+                                  <Link
+                                    key={idx}
+                                    href={item.href}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="flex items-center gap-2.5 font-body-md text-body-md text-on-surface-variant hover:text-secondary py-0.5"
+                                  >
+                                    <IconComp className="w-4 h-4 text-secondary shrink-0" />
+                                    <span>{item.name}</span>
+                                  </Link>
+                                );
+                              })}
                             </div>
                           </div>
 
                           <div className="pt-2 border-t border-outline-variant/20">
-                            <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold block mb-1">
-                              02. Creative Services
+                            <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold block mb-2">
+                              Creative Services
                             </span>
-                            <div className="pl-2 space-y-1">
-                              {creativeServicesItems.map((item, idx) => (
-                                <Link
-                                  key={idx}
-                                  href={item.href}
-                                  onClick={() => setMobileMenuOpen(false)}
-                                  className="block font-body-md text-body-md text-on-surface-variant hover:text-on-surface py-0.5"
-                                >
-                                  {item.name}
-                                </Link>
-                              ))}
+                            <div className="pl-2 space-y-2">
+                              {creativeServicesItems.map((item, idx) => {
+                                const IconComp = item.icon;
+                                return (
+                                  <Link
+                                    key={idx}
+                                    href={item.href}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="flex items-center gap-2.5 font-body-md text-body-md text-on-surface-variant hover:text-secondary py-0.5"
+                                  >
+                                    <IconComp className="w-4 h-4 text-secondary shrink-0" />
+                                    <span>{item.name}</span>
+                                  </Link>
+                                );
+                              })}
                             </div>
                           </div>
 
                           <div className="pt-2 border-t border-outline-variant/20">
-                            <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold block mb-1">
-                              03. Digital Services
+                            <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold block mb-2">
+                              Digital Services
                             </span>
-                            <div className="pl-2 space-y-1">
-                              {digitalServicesItems.map((item, idx) => (
-                                <Link
-                                  key={idx}
-                                  href={item.href}
-                                  onClick={() => setMobileMenuOpen(false)}
-                                  className="block font-body-md text-body-md text-on-surface-variant hover:text-on-surface py-0.5"
-                                >
-                                  {item.name}
-                                </Link>
-                              ))}
+                            <div className="pl-2 space-y-2">
+                              {digitalServicesItems.map((item, idx) => {
+                                const IconComp = item.icon;
+                                return (
+                                  <Link
+                                    key={idx}
+                                    href={item.href}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="flex items-center gap-2.5 font-body-md text-body-md text-on-surface-variant hover:text-secondary py-0.5"
+                                  >
+                                    <IconComp className="w-4 h-4 text-secondary shrink-0" />
+                                    <span>{item.name}</span>
+                                  </Link>
+                                );
+                              })}
                             </div>
                           </div>
                         </div>
@@ -505,4 +426,5 @@ export default function Header() {
     </>
   );
 }
+
 
