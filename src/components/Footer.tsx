@@ -47,8 +47,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-on-primary transition-colors">
-                  Integrated Enterprise Advisory
+                <Link href="/insurance" className="hover:text-on-primary transition-colors">
+                  04 / Life & Health Insurance Solutions
                 </Link>
               </li>
             </ul>

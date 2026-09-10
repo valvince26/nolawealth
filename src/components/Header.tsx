@@ -57,6 +57,7 @@ export default function Header() {
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
+    { label: "Insurance", href: "/insurance" },
     { label: "How We Work", href: "/how-we-work" },
     { label: "Why NOLA", href: "/why-nola" },
     { label: "Contact", href: "/contact" },
