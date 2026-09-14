@@ -14,11 +14,20 @@
  * defect this file replaces.
  */
 
-export type LeadSource = "contact-page" | "consultation-modal";
+export type LeadSource =
+  | "contact-page"
+  | "consultation-modal"
+  | "life-insurance-quote"
+  | "life-insurance-calculator";
+
+// The calculator sends a consent boolean and, only when consent is given, its raw
+// numeric inputs and computed result -- so this is no longer strictly string-valued.
+// The server recomputes the result from `inputs` and never trusts `result`.
+export type LeadFieldValue = string | number | boolean | null | undefined | object;
 
 export async function submitLead(
   source: LeadSource,
-  fields: Record<string, string>
+  fields: Record<string, LeadFieldValue>
 ): Promise<boolean> {
   try {
     const res = await fetch("/api/lead", {

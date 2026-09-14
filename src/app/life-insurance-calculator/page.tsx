@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { calculateNeeds, validateInputs } from "@/lib/calculator/engine";
 import { CalculatorInputs, CalculationResult } from "@/lib/calculator/types";
+import { submitLead } from "@/lib/submitLead";
 
 export default function CalculatorLandingPage() {
   const router = useRouter();
@@ -169,34 +170,34 @@ export default function CalculatorLandingPage() {
 
     setFormSubmitting(true);
 
-    try {
-      const payload = {
-        fullName: fullName.trim(),
-        stateResidence,
-        contactMethod,
-        phoneNumber: contactMethod === "phone" ? phoneNumber.trim() : undefined,
-        emailAddress: contactMethod === "email" ? emailAddress.trim() : undefined,
-        includeFinancialDetails,
-        inputs: includeFinancialDetails ? inputs : undefined,
-        result: includeFinancialDetails ? result || undefined : undefined,
-      };
+    // Routed through submitLead -> /api/lead, the same real capture path every other
+    // form on this site uses. This previously POSTed to a Next.js API route
+    // (/api/life-insurance-calculator/submit), which cannot exist: next.config.ts
+    // sets `output: "export"`, so the build silently drops API routes from the
+    // static export -- it prints them as dynamic, succeeds, and emits no api/
+    // directory. Deployed, every submission would have hit a 404 behind a green
+    // build. The server-side recalculation that route performed was worth keeping
+    // and now lives in core/nola_needs_calculator_v1.cjs on the server that serves
+    // /api/lead.
+    const ok = await submitLead("life-insurance-calculator", {
+      name: fullName.trim(),
+      email: contactMethod === "email" ? emailAddress.trim() : "",
+      phone: contactMethod === "phone" ? phoneNumber.trim() : "",
+      state: stateResidence,
+      contactMethod,
+      includeFinancialDetails,
+      inputs: includeFinancialDetails ? inputs : undefined,
+      result: includeFinancialDetails ? result || undefined : undefined,
+    });
 
-      const res = await fetch("/api/life-insurance-calculator/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || !data.success) {
-        throw new Error(data.error || "Submission failed. Please try again.");
-      }
-
+    if (ok) {
       router.push("/life-insurance-calculator/thank-you");
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Unable to submit review request.";
-      setFormError(msg);
+    } else {
+      // Never route to the thank-you page on failure -- it promises an advisor
+      // review we cannot deliver for a request that was never received.
+      setFormError(
+        "We couldn't submit your request. Please call (504) 891-2000 or email marcus.still@nolawealthfinancial.com and we'll take your request directly."
+      );
       setFormSubmitting(false);
     }
   };
@@ -689,7 +690,7 @@ export default function CalculatorLandingPage() {
                     <span className="text-xs font-mono font-semibold uppercase text-nola-gold block mb-1">No Scenario Modeled</span>
                     <h3 className="text-xl font-serif font-bold text-nola-navy">No Modeled Needs or Resources Entered</h3>
                     <p className="text-xs sm:text-sm text-nola-muted mt-2 max-w-lg mx-auto">
-                      All fields were left at $0. This is not a meaningful coverage assessment. Click "Adjust My Answers" below to enter your protection goals.
+                      All fields were left at $0. This is not a meaningful coverage assessment. Click &ldquo;Adjust My Answers&rdquo; below to enter your protection goals.
                     </p>
                   </div>
                 ) : result.isZeroResult ? (

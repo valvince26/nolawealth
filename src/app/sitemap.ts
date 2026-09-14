@@ -28,6 +28,7 @@ const APP_ROUTES = [
   { path: "/why-nola/", priority: 0.8 },
   { path: "/about/", priority: 0.7 },
   { path: "/contact/", priority: 0.7 },
+  { path: "/life-insurance-quote/", priority: 0.9 },
 ];
 
 // Static pages already on disk in the docroot. Not built by this app, still live.

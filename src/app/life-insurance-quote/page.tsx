@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { submitLead } from "@/lib/submitLead";
 
 export default function LifeInsuranceQuotePage() {
   const router = useRouter();
@@ -68,7 +69,9 @@ export default function LifeInsuranceQuotePage() {
     return isValid;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitError, setSubmitError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -77,36 +80,36 @@ export default function LifeInsuranceQuotePage() {
     }
 
     setShowErrorBanner(false);
+    setSubmitError("");
     setIsSubmitting(true);
 
-    // Simulate backend lead ingestion API, then route to thank you page
-    setTimeout(() => {
-      setIsSubmitting(false);
+    // Real capture. This previously did `setTimeout(..., 1200)` with the comment
+    // "Simulate backend lead ingestion API" and then routed straight to the
+    // thank-you page -- the quote request was discarded and the visitor was told
+    // "our team will follow up." That promise has to be backed by a stored lead.
+    const ok = await submitLead("life-insurance-quote", {
+      name: fullName,
+      email: emailAddress,
+      phone: phoneNumber,
+      state: stateResidence,
+      protectionGoal,
+      contactMethod,
+    });
+
+    setIsSubmitting(false);
+
+    if (ok) {
       router.push("/life-insurance-quote/thank-you");
-    }, 1200);
+    } else {
+      // Never route to the thank-you page on failure -- that page makes explicit
+      // follow-up commitments we cannot keep for a request we never received.
+      setSubmitError(
+        "We couldn't submit your request. Please call (504) 891-2000 or email marcus.still@nolawealthfinancial.com and we'll take your request directly."
+      );
+    }
   };
 
-  const triggerSimulatedSuccess = () => {
-    setFullName("Jonathan Vance");
-    setStateResidence("LA");
-    setPhoneNumber("(504) 891-2000");
-    setProtectionGoal("family_income");
-    setFullNameError(false);
-    setStateError(false);
-    setPhoneError(false);
-    setEmailError(false);
-    setShowErrorBanner(false);
-    setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      router.push("/life-insurance-quote/thank-you");
-    }, 1200);
-  };
-
-  const toggleSimulatedError = () => {
-    setShowErrorBanner((prev) => !prev);
-  };
 
   return (
     <div className="bg-nola-cream text-nola-charcoal font-sans antialiased selection:bg-nola-gold selection:text-nola-navyDeep min-h-screen flex flex-col justify-between">
@@ -133,7 +136,7 @@ export default function LifeInsuranceQuotePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
             <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsAQJR0CZLrKvty1YVkSxNKwSgv-fSB-oopNn5kJaYdCKNZAr5aMX_EGM18uuSjBfN7M72-cQvvtv4LBMrRv9XQFMQMXGGORP8Y4s7h38qT2HAyzAadi3_HzjZGtQsz2UtUaC932HZ-sW_vz13RKzmvUn2l7ISm2ip9SyRkdxHQiKp1p8h29WUU8cfZymblCp8DxFxmvMumId1mDGIadwgg5V4rpukHsxzcjZs6267b_MJc_aa5DHgU2nkK-byqsQZIEE"
+              src="/nola-emblem.png"
               alt="Nola Wealth Financial Emblem & Wordmark"
               width={220}
               height={56}
@@ -431,7 +434,7 @@ export default function LifeInsuranceQuotePage() {
                         </span>
                       </p>
                       <p className="text-[10px] text-gray-400 mt-1 italic">
-                        * Draft copy for review before campaign launch. No automated SMS or unsolicited third-party marketing.
+                        We do not send automated SMS or share your information with third-party marketers.
                       </p>
                     </div>
                   </div>
@@ -454,6 +457,15 @@ export default function LifeInsuranceQuotePage() {
                       )}
                     </button>
                   </div>
+
+                  {submitError && (
+                    <p
+                      role="alert"
+                      className="text-sm text-center text-red-600 bg-red-50 border border-red-200 rounded px-3 py-2 leading-snug"
+                    >
+                      {submitError}
+                    </p>
+                  )}
 
                   <p className="text-[11px] text-center text-nola-muted leading-tight">
                     Submitting this form does not provide insurance coverage or guarantee approval.
@@ -684,7 +696,7 @@ export default function LifeInsuranceQuotePage() {
             <div className="md:col-span-5 space-y-3">
               <div className="flex items-center gap-3">
                 <Image 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX0LwZvdKU6NW6nITZpZZKPMewR-74T_KXESzY2aLRA-Bm7sSBxuGhElaJ5PunygsnXwLe-mUip31xLAi6_lIrA2ngDnGfKyz4a8iqXdT3YG8gtj65EuQbg_6bUZhSgMORerVXpqCRftev57VnscUEuZck5Er2oJJpBDJSiLmBiuA4Q50x30dLJJBXFJN5uPHIGNS2IiHjocJLwOOwMiSpewypi15DVCyju34O9rD-7LMLisvXLaSdVGE411aZesV_sQc" 
+                  src="/nola-emblem.png" 
                   alt="Nola Wealth Financial" 
                   width={160}
                   height={40}

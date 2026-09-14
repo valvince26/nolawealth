@@ -21,7 +21,7 @@ export default function ThankYouPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <Image 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPc7NwVuvhQZmWTUbE8GAD-hp9LPz-8ahViAJkRZmAb6VbHVIF7-uuKASw9Lf_-4Yqu5yByE3zfkZQ0GctUXJ3kMg6MwClpafu6R4v5-RECc7BW8BmX3tDO5fZpvffuYZ12dWUF5WkCq44ytKMPjctfeNnIQJ3RH9j-C4C98zF7Y6SWcSPMfIhDS_A2IJbETPHiFmLR191gOS9W36VOPYfwiu5MYSxJdor6KrIB9a2FfrY7FRGUoVQCHL3e_p0OP4v17k" 
+              src="/nola-emblem.png" 
               alt="Nola Wealth Financial Emblem & Wordmark" 
               width={220}
               height={56}
