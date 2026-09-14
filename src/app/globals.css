@@ -71,6 +71,22 @@
   --color-inverse-primary: #bac7e1;
   --color-on-tertiary: #ffffff;
 
+  /* NOLA Landing Page Custom Palette */
+  --color-nola-navy: #081726;
+  --color-nola-navyDeep: #040d16;
+  --color-nola-navyMuted: #162638;
+  --color-nola-gold: #C5A059;
+  --color-nola-goldHover: #B28F48;
+  --color-nola-goldLight: #F3ECE0;
+  --color-nola-goldBorder: #E2D1B2;
+  --color-nola-cream: #FBFBF9;
+  --color-nola-sand: #F4F4F0;
+  --color-nola-charcoal: #1A202C;
+  --color-nola-muted: #5A6675;
+  --color-nola-border: #E2E8F0;
+  --color-nola-success: #1B8755;
+  --color-nola-error: #D9383A;
+
   /* Spacing */
   --spacing-space-2xs: 0.25rem;
   --spacing-space-xs: 0.5rem;
@@ -94,7 +110,23 @@
 
   /* Font Families */
   --font-playfair: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-cinzel: var(--font-cinzel), "Cinzel", serif;
+  --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-jakarta: var(--font-jakarta), "Plus Jakarta Sans", sans-serif;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #C5A059 0%, #E8D3A2 50%, #B38E46 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(197, 160, 89, 0.08) 0%, rgba(8, 23, 38, 0) 70%);
+}
+.gold-accent-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C5A059, transparent);
 }
 
 /* Typography Utility Classes matching Stitch custom font extensions */
