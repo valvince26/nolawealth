@@ -113,13 +113,6 @@ export default function ThankYouPage() {
             </div>
 
           </div>
-
-          {/* Engineering Annotation */}
-          <div className="mt-6 p-4 rounded bg-white/70 border border-nola-border text-xs text-nola-muted">
-            <span className="font-mono text-[10px] font-bold text-nola-navy uppercase block mb-1">State Integrity Note:</span>
-            This confirmation view is designed to be rendered only after the backend lead ingestion API returns a verified HTTP 200 payload. No artificial countdown timers, fake policy numbers, or automated premium approximations are displayed.
-          </div>
-
         </div>
       </main>
 

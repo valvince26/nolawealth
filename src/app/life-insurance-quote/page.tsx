@@ -473,18 +473,6 @@ export default function LifeInsuranceQuotePage() {
                   )}
                 </form>
 
-                {/* DEV QA TOOLBAR */}
-                <div className="mt-6 pt-4 border-t border-dashed border-nola-border flex flex-wrap items-center justify-between gap-2 text-[10px] text-nola-muted">
-                  <span className="font-mono text-gray-400 uppercase">Interactive State QA:</span>
-                  <div className="flex gap-2">
-                    <button type="button" onClick={triggerSimulatedSuccess} className="underline hover:text-nola-gold">Simulate Submit</button>
-                    <span>•</span>
-                    <button type="button" onClick={toggleSimulatedError} className="underline hover:text-nola-gold">Toggle Error State</button>
-                    <span>•</span>
-                    <a href="#state-showcase" className="text-nola-gold underline font-semibold">View All States</a>
-                  </div>
-                </div>
-
               </div>
             </div>
 
@@ -742,67 +730,6 @@ export default function LifeInsuranceQuotePage() {
           </div>
         </div>
       </footer>
-
-      {/* FORM INTERACTION STATES SHOWCASE */}
-      <aside id="state-showcase" className="bg-gray-100 py-12 border-t-4 border-nola-gold">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 text-[10px] font-mono font-bold bg-nola-navy text-white rounded">DEV SPEC</span>
-              <h3 className="text-xl font-serif font-bold text-nola-navy">Form Interaction &amp; Validation States Matrix</h3>
-            </div>
-            <p className="text-xs text-nola-muted mt-1">
-              Visual documentation of all 7 requested states for the single-step <code className="bg-gray-200 px-1 py-0.5 rounded text-nola-navy font-mono">life_quote_v1</code> form component in Antigravity.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-            <div className="bg-white p-4 rounded border border-nola-border shadow-sm">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-nola-gold font-bold block mb-2">1. Active / Focused Field</span>
-              <label className="block font-semibold text-nola-navy mb-1">Full Name</label>
-              <input type="text" value="Jonathan Van" className="w-full px-2.5 py-1.5 rounded border-2 border-nola-gold ring-2 ring-nola-gold/20 text-xs focus:outline-none" readOnly />
-              <span className="text-[10px] text-nola-muted mt-1 block">Gold highlight outline &amp; focus ring.</span>
-            </div>
-
-            <div className="bg-white p-4 rounded border border-nola-border shadow-sm">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-600 font-bold block mb-2">2. Completed / Valid</span>
-              <label className="block font-semibold text-nola-navy mb-1">State of Residence</label>
-              <div className="relative">
-                <input type="text" value="Louisiana (LA)" className="w-full px-2.5 py-1.5 rounded border border-emerald-500 bg-emerald-50/20 text-xs text-gray-800" readOnly />
-                <span className="absolute right-2 top-2 text-emerald-600">✓</span>
-              </div>
-              <span className="text-[10px] text-emerald-700 mt-1 block">Subtle green validation cue.</span>
-            </div>
-
-            <div className="bg-white p-4 rounded border border-nola-border shadow-sm">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-red-600 font-bold block mb-2">3. Missing Required / Invalid</span>
-              <label className="block font-semibold text-nola-navy mb-1">Phone Number <span className="text-red-500">*</span></label>
-              <input type="text" value="504-12" className="w-full px-2.5 py-1.5 rounded border border-red-500 bg-red-50/30 text-xs text-red-900" readOnly />
-              <span className="text-[10px] text-red-600 mt-1 block">Please enter a valid 10-digit phone number.</span>
-            </div>
-
-            <div className="bg-white p-4 rounded border border-nola-border shadow-sm">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-blue-600 font-bold block mb-2">4. Submitting / Loading</span>
-              <button className="w-full py-2 px-3 rounded bg-nola-gold text-nola-navyDeep font-bold text-xs flex items-center justify-center gap-2 opacity-80 cursor-wait">
-                <svg className="w-3.5 h-3.5 animate-spin" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                Submitting Request...
-              </button>
-              <span className="text-[10px] text-nola-muted mt-1.5 block">Disabled state, prevents double submission.</span>
-            </div>
-          </div>
-
-          <div className="mt-6 p-4 rounded bg-nola-navyMuted text-white/90 border border-white/10 text-xs">
-            <h4 className="font-bold text-nola-gold mb-1">Engineering Handoff Annotations (Antigravity &amp; Vercel)</h4>
-            <ul className="list-disc list-inside space-y-1 text-white/70">
-              <li><strong>Form Identifier:</strong> <code className="text-nola-gold">life_quote_v1</code>. Preserve campaign attribution parameters (<code className="text-white">utm_source</code>, <code className="text-white">utm_campaign</code>, <code className="text-white">utm_content</code>) alongside submitted lead record.</li>
-              <li><strong>Privacy &amp; Tracking Isolation:</strong> Do not trigger third-party pixels with PII fields. Advertising tracking is separated from backend lead ingestion.</li>
-              <li><strong>Carrier Licensing Rule:</strong> Backend state validation must cross-reference Nola's active producer licenses before routing lead to advisors.</li>
-              <li><strong>Confirmation Routing:</strong> On successful 200 OK from server API, route user directly to <code className="text-nola-gold">/life-insurance-quote/thank-you</code>.</li>
-            </ul>
-          </div>
-        </div>
-      </aside>
-
     </div>
   );
 }
