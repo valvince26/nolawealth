@@ -329,13 +329,13 @@ export default function InsurancePage() {
                         </div>
 
                         <div className="pt-space-md border-t border-outline-variant/20">
-                          <button
-                            onClick={() => setConsultationOpen(true)}
+                          <Link
+                            href="/life-insurance-quote"
                             className="inline-flex items-center justify-between w-full font-label-md text-label-md uppercase tracking-wider text-secondary hover:text-on-surface transition-colors"
                           >
                             <span>Request Life Quote</span>
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     );
