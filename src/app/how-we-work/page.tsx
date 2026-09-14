@@ -89,7 +89,7 @@ export default function HowWeWorkPage() {
 
                 {/* Executive Subtitle */}
                 <p className="font-body-xl text-body-xl text-on-surface-variant max-w-2xl leading-relaxed">
-                  Every business is different. That's why NOLA starts by understanding your objectives before recommending people, services, or solutions.
+                  Every business is different. That&rsquo;s why NOLA starts by understanding your objectives before recommending people, services, or solutions.
                 </p>
 
                 {/* Quick Metatags */}
@@ -421,7 +421,7 @@ export default function HowWeWorkPage() {
                   </h2>
 
                   <p className="font-body-lg text-body-lg text-on-primary-container leading-relaxed">
-                    Tell us where your business needs support and we'll help map out the next step. No rigid packages, no generic pitches—just a clear operational path forward.
+                    Tell us where your business needs support and we&rsquo;ll help map out the next step. No rigid packages, no generic pitches—just a clear operational path forward.
                   </p>
 
                   <div className="pt-space-sm flex flex-col sm:flex-row items-center justify-center gap-space-md">

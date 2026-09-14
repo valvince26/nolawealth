@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { submitLead } from "@/lib/submitLead";
 import {
   Phone,
   Mail,
@@ -30,9 +31,22 @@ export default function ContactPage() {
     needsDescription: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setSendError("");
+    const ok = await submitLead("contact-page", formData);
+    setSending(false);
+    if (ok) {
+      setSubmitted(true);
+    } else {
+      setSendError(
+        "We couldn't send that just now. Please email marcus.still@nolawealthfinancial.com or call (504) 891-2000."
+      );
+    }
   };
 
   const focusInput = () => {
@@ -137,15 +151,15 @@ export default function ContactPage() {
                         </span>
                         <a
                           className="font-body-md text-body-md text-on-surface font-semibold hover:text-secondary block transition-colors"
-                          href="mailto:advisory@nolawealth.com"
+                          href="mailto:marcus.still@nolawealthfinancial.com"
                         >
-                          advisory@nolawealth.com
+                          marcus.still@nolawealthfinancial.com
                         </a>
                         <a
                           className="font-body-md text-body-md text-on-surface-variant hover:text-secondary block transition-colors"
-                          href="mailto:inquiries@nolawealthfinancial.com"
+                          href="mailto:marcus.still@nolawealthfinancial.com"
                         >
-                          inquiries@nolawealthfinancial.com
+                          marcus.still@nolawealthfinancial.com
                         </a>
                       </div>
                     </div>
@@ -350,11 +364,22 @@ export default function ContactPage() {
                         <div className="pt-2">
                           <button
                             type="submit"
-                            className="w-full py-4 px-6 bg-secondary text-on-secondary font-label-md text-label-md uppercase tracking-[0.14em] rounded-DEFAULT shadow-md hover:bg-on-secondary-fixed-variant transition-all flex items-center justify-center gap-2 group cursor-pointer"
+                            disabled={sending}
+                            className="w-full py-4 px-6 bg-secondary text-on-secondary font-label-md text-label-md uppercase tracking-[0.14em] rounded-DEFAULT shadow-md hover:bg-on-secondary-fixed-variant transition-all flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                           >
-                            <span>Request a Consultation</span>
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            <span>{sending ? "Sending…" : "Request a Consultation"}</span>
+                            {!sending && (
+                              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            )}
                           </button>
+                          {sendError && (
+                            <p
+                              role="alert"
+                              className="mt-3 font-body-sm text-body-sm text-error text-center"
+                            >
+                              {sendError}
+                            </p>
+                          )}
                         </div>
 
                         {/* Privacy Notice */}

@@ -91,7 +91,7 @@ export default function Footer() {
             <p className="font-body-md text-body-md text-on-primary-container leading-relaxed">
               Poydras Executive Center, Suite 3400<br />
               New Orleans, Louisiana 70112<br />
-              advisory@nolawealth.com<br />
+              marcus.still@nolawealthfinancial.com<br />
               +1 (504) 891-2000
             </p>
           </div>
@@ -99,11 +99,19 @@ export default function Footer() {
 
         {/* Sub-footer Disclosures */}
         <div className="pt-space-lg border-t border-outline/20 flex flex-col sm:flex-row items-center justify-between gap-space-md font-label-sm text-label-sm text-on-primary-container">
-          <p>© 2025 NOLA Wealth Financial Advisory LLC. All fiduciary rights reserved.</p>
+          <p>© 2026 Nola Wealth Group LLC. All rights reserved.</p>
           <div className="flex items-center gap-space-lg">
-            <span className="hover:text-on-primary cursor-pointer transition-colors">Regulatory Disclosures</span>
-            <span className="hover:text-on-primary cursor-pointer transition-colors">Form ADV Part 2A</span>
-            <span className="hover:text-on-primary cursor-pointer transition-colors">Client Privacy Policy</span>
+            {/*
+              "Regulatory Disclosures" and "Form ADV Part 2A" were removed here on
+              2026-09-14. Both were non-functional <span> elements styled to look like
+              links, and Form ADV Part 2A is a specific SEC filing made by registered
+              investment advisers. Advertising it without an actual filing is a
+              regulatory misrepresentation, not a broken link. Restore only if a real
+              filing exists and can be linked to.
+            */}
+            <a href="/privacy/" className="hover:text-on-primary transition-colors">
+              Privacy Policy
+            </a>
           </div>
         </div>
       </div>

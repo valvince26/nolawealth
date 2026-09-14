@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { X, Calendar, Clock, CheckCircle2, Building2, User, Mail, Sparkles } from "lucide-react";
+import { submitLead } from "@/lib/submitLead";
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -19,12 +20,26 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
     time: "10:00 AM",
     notes: "",
   });
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
 
+  // Every hook must be declared above this early return — React requires hooks to be
+  // called in the same order on every render.
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setSendError("");
+    const ok = await submitLead("consultation-modal", formData);
+    setSending(false);
+    if (ok) {
+      setSubmitted(true);
+    } else {
+      setSendError(
+        "We couldn't send that just now. Please email marcus.still@nolawealthfinancial.com or call (504) 891-2000."
+      );
+    }
   };
 
   const handleReset = () => {
@@ -222,12 +237,20 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 </button>
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-wider px-6 py-3 rounded-DEFAULT bg-secondary text-on-secondary shadow-md hover:bg-on-secondary-fixed-variant transition-all"
+                  disabled={sending}
+                  className="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-wider px-6 py-3 rounded-DEFAULT bg-secondary text-on-secondary shadow-md hover:bg-on-secondary-fixed-variant transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <span>Request Consultation</span>
-                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  <span>{sending ? "Sending…" : "Request Consultation"}</span>
+                  {!sending && (
+                    <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  )}
                 </button>
               </div>
+              {sendError && (
+                <p role="alert" className="mt-3 font-body-sm text-body-sm text-error text-right">
+                  {sendError}
+                </p>
+              )}
             </form>
           )}
         </div>
