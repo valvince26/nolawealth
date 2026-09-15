@@ -216,7 +216,7 @@ export default function InsurancePage() {
                 <div className="lg:col-span-5 relative mt-space-xl lg:mt-0">
                   <div className="relative rounded-xl overflow-hidden shadow-xl bg-surface-container-lowest aspect-[4/3] sm:aspect-auto sm:h-[460px] border border-secondary/20">
                     <Image
-                      src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop"
+                      src="/img/unsplash-1576091160399-112ba8d25d1d.jpg"
                       alt="Healthcare and financial security consultation"
                       fill
                       className="object-cover"

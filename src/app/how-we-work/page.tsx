@@ -373,7 +373,7 @@ export default function HowWeWorkPage() {
                   <div className="relative z-10 bg-surface rounded-DEFAULT overflow-hidden shadow-xl border border-secondary/20">
                     <div className="relative w-full h-80 sm:h-96">
                       <Image
-                        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop"
+                        src="/img/unsplash-1522071820081-009f0129c71c.jpg"
                         alt="Strategic team collaboration in high-rise boardroom"
                         fill
                         className="object-cover object-center"

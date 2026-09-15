@@ -14,7 +14,7 @@ export default function Hero() {
         {/* Office Building Background Image Layer */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <Image
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop"
+            src="/img/unsplash-1486406146926-c627a92ad1ab.jpg"
             alt="Corporate Office Building Architecture"
             fill
             className="object-cover object-center opacity-15"
@@ -80,7 +80,7 @@ export default function Hero() {
             <div className="lg:col-span-6 relative mt-space-xl lg:mt-0">
               <div className="relative w-full rounded-DEFAULT overflow-hidden shadow-xl bg-surface-container aspect-[4/3] sm:aspect-auto sm:h-[520px] lg:h-[580px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop"
+                  src="/img/unsplash-1522071820081-009f0129c71c.jpg"
                   alt="Executive Strategy Leadership Team in Corporate Boardroom"
                   fill
                   className="object-cover object-center transform hover:scale-[1.02] transition-transform duration-700 ease-out"

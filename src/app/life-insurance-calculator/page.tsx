@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { calculateNeeds, validateInputs } from "@/lib/calculator/engine";
 import { CalculatorInputs, CalculationResult } from "@/lib/calculator/types";
 import { submitLead } from "@/lib/submitLead";
+import HoneypotField from "@/components/HoneypotField";
 
 export default function CalculatorLandingPage() {
   const router = useRouter();
@@ -39,6 +40,7 @@ export default function CalculatorLandingPage() {
   // Review-Request Form State
   const [fullName, setFullName] = useState("");
   const [stateResidence, setStateResidence] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot — see HoneypotField
   const [contactMethod, setContactMethod] = useState<"phone" | "email">("phone");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
@@ -186,6 +188,7 @@ export default function CalculatorLandingPage() {
       state: stateResidence,
       contactMethod,
       includeFinancialDetails,
+      website, // honeypot — see HoneypotField
       inputs: includeFinancialDetails ? inputs : undefined,
       result: includeFinancialDetails ? result || undefined : undefined,
     });
@@ -210,7 +213,7 @@ export default function CalculatorLandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
             <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsAQJR0CZLrKvty1YVkSxNKwSgv-fSB-oopNn5kJaYdCKNZAr5aMX_EGM18uuSjBfN7M72-cQvvtv4LBMrRv9XQFMQMXGGORP8Y4s7h38qT2HAyzAadi3_HzjZGtQsz2UtUaC932HZ-sW_vz13RKzmvUn2l7ISm2ip9SyRkdxHQiKp1p8h29WUU8cfZymblCp8DxFxmvMumId1mDGIadwgg5V4rpukHsxzcjZs6267b_MJc_aa5DHgU2nkK-byqsQZIEE"
+              src="/img/nola-8b3100126fd5.png"
               alt="Nola Wealth Financial Emblem & Wordmark"
               width={220}
               height={56}
@@ -851,6 +854,7 @@ export default function CalculatorLandingPage() {
                     </div>
 
                     <form onSubmit={handleReviewSubmit} className="space-y-4">
+                      <HoneypotField value={website} onChange={setWebsite} />
                       {/* Name */}
                       <div>
                         <label htmlFor="fullName" className="block text-xs font-semibold text-nola-navy uppercase tracking-wider mb-1">

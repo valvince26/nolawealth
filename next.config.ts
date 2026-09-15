@@ -14,14 +14,16 @@ const nextConfig: NextConfig = {
     // Static export cannot run the Next image optimizer at request time.
     unoptimized: true,
 
-    // Was `hostname: "**"`, which permitted image loading from any host on the
-    // internet. Narrowed to the two hosts actually referenced. Note the site's CSP
-    // sets `img-src 'self' data:`, so remote images would be blocked anyway — if
-    // nothing here is used, this block can be deleted entirely.
-    remotePatterns: [
-      { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "lh3.googleusercontent.com" },
-    ],
+    // `remotePatterns` is gone as of 2026-09-15 and must not come back. The site's
+    // enforced CSP is `img-src 'self' data:`, so every remote image was blocked in the
+    // browser regardless of what this allowed — the live homepage was shipping 30
+    // unsplash.com URLs that no visitor ever saw. All 21 are now checked in under
+    // public/img/ and referenced locally. One of them (photo-1542744094-…, Creative
+    // Services) had also 404'd upstream, so it was doubly dead; replaced.
+    //
+    // If a remote host ever genuinely needs allowing, the CSP in
+    // still-os-consciousness/core/nolawealth_csp_sync.cjs has to change in the same
+    // commit, or the image will silently not render.
   },
 };
 

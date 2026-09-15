@@ -8,7 +8,7 @@ export default function ServicesSection() {
       numTag: "01 — Operational Infrastructure",
       materialIcon: "badge",
       title: "Remote Staffing",
-      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop",
+      image: "/img/unsplash-1600880292203-757bb62b4baf.jpg",
       description:
         "Extend your internal bandwidth with dependable, rigorously trained professionals who manage customer touchpoints and core operational tasks.",
       checklist: [
@@ -26,7 +26,7 @@ export default function ServicesSection() {
       numTag: "02 — Brand Expression",
       materialIcon: "palette",
       title: "Creative Services",
-      image: "https://images.unsplash.com/photo-1542744094-3a3121695437?q=80&w=800&auto=format&fit=crop",
+      image: "/img/unsplash-1561070791-2526d30994b5.jpg",
       description:
         "Transform high-conviction concepts into bespoke visual assets and digital experiences that reflect the prestige and authority of your organization.",
       checklist: [
@@ -44,7 +44,7 @@ export default function ServicesSection() {
       numTag: "03 — Market Capture",
       materialIcon: "insights",
       title: "Digital Services",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+      image: "/img/unsplash-1460925895917-afdab827c52f.jpg",
       description:
         "Capture qualified demand and solidify market share through high-performance acquisition funnels and multi-channel engagement pipelines.",
       checklist: [

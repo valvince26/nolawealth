@@ -71,7 +71,7 @@ export default function InstitutionalAdvantage() {
           <div className="lg:col-span-6 mt-space-2xl lg:mt-0">
             <div className="relative rounded-DEFAULT overflow-hidden shadow-2xl bg-surface-container-high/10 aspect-[4/3] sm:aspect-auto sm:h-[480px]">
               <Image
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1200&auto=format&fit=crop"
+                src="/img/unsplash-1573496359142-b8d87734a5a2.jpg"
                 alt="High-Level Corporate Board Meeting in Penthouse Suite"
                 fill
                 className="object-cover object-center"

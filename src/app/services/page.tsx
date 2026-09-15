@@ -235,7 +235,7 @@ export default function ServicesPage() {
                 <div className="lg:col-span-5 relative mt-space-xl lg:mt-0">
                   <div className="relative rounded-xl overflow-hidden shadow-xl bg-surface-container-lowest aspect-[4/3] sm:aspect-auto sm:h-[460px]">
                     <Image
-                      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop"
+                      src="/img/unsplash-1522071820081-009f0129c71c.jpg"
                       alt="Executive leadership strategy meeting in boardroom"
                       fill
                       className="object-cover"

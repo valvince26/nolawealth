@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { X, Calendar, Clock, CheckCircle2, Building2, User, Mail, Sparkles } from "lucide-react";
 import { submitLead } from "@/lib/submitLead";
+import HoneypotField from "@/components/HoneypotField";
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -19,6 +20,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
     date: "",
     time: "10:00 AM",
     notes: "",
+    website: "", // honeypot — see HoneypotField
   });
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState("");
@@ -107,6 +109,10 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
+              <HoneypotField
+                value={formData.website}
+                onChange={(v) => setFormData({ ...formData, website: v })}
+              />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">

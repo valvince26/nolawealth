@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { submitLead } from "@/lib/submitLead";
+import HoneypotField from "@/components/HoneypotField";
 import {
   Phone,
   Mail,
@@ -29,6 +30,7 @@ export default function ContactPage() {
     phone: "",
     serviceInterest: "",
     needsDescription: "",
+    website: "", // honeypot — see HoneypotField
   });
 
   const [sending, setSending] = useState(false);
@@ -245,6 +247,10 @@ export default function ContactPage() {
                       </div>
                     ) : (
                       <form className="space-y-space-md" onSubmit={handleSubmit}>
+                        <HoneypotField
+                          value={formData.website}
+                          onChange={(v) => setFormData({ ...formData, website: v })}
+                        />
                         {/* Name Row */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
                           <div className="space-y-1">

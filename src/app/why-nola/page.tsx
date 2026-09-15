@@ -184,7 +184,7 @@ export default function WhyNolaPage() {
                 <div className="lg:col-span-5 relative mt-space-lg lg:mt-0">
                   <div className="relative rounded-xl overflow-hidden shadow-xl bg-surface-container-lowest border border-secondary/20 aspect-[4/3] sm:aspect-auto sm:h-[460px]">
                     <Image
-                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1200&auto=format&fit=crop"
+                      src="/img/unsplash-1573496359142-b8d87734a5a2.jpg"
                       alt="Modern executive boardroom meeting"
                       fill
                       className="object-cover"

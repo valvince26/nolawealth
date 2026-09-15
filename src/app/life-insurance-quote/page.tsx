@@ -5,11 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { submitLead } from "@/lib/submitLead";
+import HoneypotField from "@/components/HoneypotField";
 
 export default function LifeInsuranceQuotePage() {
   const router = useRouter();
 
   // Form State
+  const [website, setWebsite] = useState(""); // honeypot — see HoneypotField
   const [contactMethod, setContactMethod] = useState<"phone" | "email">("phone");
   const [fullName, setFullName] = useState("");
   const [stateResidence, setStateResidence] = useState("");
@@ -94,6 +96,7 @@ export default function LifeInsuranceQuotePage() {
       state: stateResidence,
       protectionGoal,
       contactMethod,
+      website, // honeypot — see HoneypotField
     });
 
     setIsSubmitting(false);
@@ -247,6 +250,7 @@ export default function LifeInsuranceQuotePage() {
                 </div>
 
                 <form id="life_quote_v1" className="space-y-4" onSubmit={handleSubmit}>
+                  <HoneypotField value={website} onChange={setWebsite} />
                   {/* FIELD A: Full Name */}
                   <div>
                     <label htmlFor="fullName" className="block text-xs font-semibold text-nola-navy uppercase tracking-wider mb-1.5">

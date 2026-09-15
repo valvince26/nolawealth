@@ -8,7 +8,7 @@ export default function IntroValueProp() {
       tag: "01 / Agility",
       icon: "tune",
       title: "Flexible Expertise",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop",
+      image: "/img/unsplash-1573496359142-b8d87734a5a2.jpg",
       description:
         "Access pre-vetted specialists, fractional leadership, and dedicated teams on-demand as your organizational mandates evolve, eliminating hiring friction.",
       linkText: "Adaptive Staffing",
@@ -18,7 +18,7 @@ export default function IntroValueProp() {
       tag: "02 / Synergy",
       icon: "hub",
       title: "Integrated Solutions",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600&auto=format&fit=crop",
+      image: "/img/unsplash-1522202176988-66273c2fd55f.jpg",
       description:
         "Staffing, creative production, and digital acquisition channels work cohesively with single-point accountability, avoiding fragmented vendor management.",
       linkText: "Unified Workflow",
@@ -28,7 +28,7 @@ export default function IntroValueProp() {
       tag: "03 / Return",
       icon: "trending_up",
       title: "Growth Focused",
-      image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=600&auto=format&fit=crop",
+      image: "/img/unsplash-1559526324-4b87b5e36e44.jpg",
       description:
         "Every deliverable is engineered against bottom-line operational efficiency, customer lifetime value, and measurable enterprise valuation.",
       linkText: "Enduring Value",

@@ -15,19 +15,19 @@ export default function AboutPage() {
       name: "Marcus Vance",
       role: "Managing Partner & Chief Strategic Officer",
       bio: "Former enterprise strategist with 18+ years building operational frameworks for middle-market growth firms.",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop",
+      image: "/img/unsplash-1560250097-0b93528c311a.jpg",
     },
     {
       name: "Helena St. Clair",
       role: "Partner & Head of Creative Direction",
       bio: "Pioneered brand architecture systems for national financial institutions and luxury commercial enterprises.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop",
+      image: "/img/unsplash-1573496359142-b8d87734a5a2.jpg",
     },
     {
       name: "Julian Dupree",
       role: "Director of Digital Infrastructure & Analytics",
       bio: "Specializes in high-velocity tech workflows, CRM orchestration, and enterprise acquisition engines.",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop",
+      image: "/img/unsplash-1519085360753-af0119f7cbe7.jpg",
     },
   ];
 
