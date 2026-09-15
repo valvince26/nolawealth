@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Compiled output of `npm test` (the calculator engine suite). It is generated
+    // CommonJS, so linting it reports a require()-style-import error against code
+    // nobody wrote or ships. Gitignored too.
+    ".test-build/**",
   ]),
 ]);
 
